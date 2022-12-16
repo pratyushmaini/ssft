@@ -10,10 +10,11 @@ def parse_args():
     ## Basics
     parser.add_argument("--config_file", help="Configuration file containing parameters", type=str)
     parser.add_argument("--debug_mode", help="Switch Off Logging", action='store_true', default=False)
-    parser.add_argument("--model_type", help="Model Architecture", type=str, default = "lenet", choices = ["resnet50","resnet9","resnet18","lenet"])
+    parser.add_argument("--model_type", help="Model Architecture", type=str, default = "resnet9", choices = ["resnet50","resnet9","resnet18","lenet"])
 
     parser.add_argument("--dataset1", help="Select dataset for first split", type=str, default = "mnist", choices = ["mnist","fashionmnist","emnist","cifar10","mnist_cifar_union","cifar-5m","cifar100","cifar10_500k","imagenette","cifar10_dcgan"])
     parser.add_argument("--dataset2", help="Select dataset for second split", type=str, default = "mnist", choices = ["mnist","fashionmnist","emnist","cifar10","mnist_cifar_union","cifar-5m","cifar100","cifar10_500k","imagenette","cifar10_dcgan"])
+    parser.add_argument("--reverse_splits", help="Reverse first and second split", type=int, default = 0, choices = [0,1])
 
     ## Add Noise
     parser.add_argument("--noise_1", help="Fraction of Label Noise in Dataset 1", type=float, default = 0)
@@ -28,9 +29,10 @@ def parse_args():
     parser.add_argument("--seed_superclass", help = "Seed for CIFAR100 superclass", type = int, default = 0)
 
     parser.add_argument("--batch_size", help = "Batch Size for Train Set (Default = 512)", type = int, default = 512)
-    parser.add_argument("--model_id", help = "For Saving", type = str, default = '0')
-    parser.add_argument("--seed", help = "Seed", type = int, default = 0)
+    parser.add_argument("--seed", help = "Seed for Data", type = int, default = 0)
+    parser.add_argument("--model_seed", help = "Seed for Model (for randomization)", type = int, default = 0)
     parser.add_argument("--num_epochs", help = "Number of Epochs", type = int, default = 100)
+    parser.add_argument("--name", help = "Naming the experiment", type = str, default = "")
     
     #HPARAMS
     parser.add_argument("--sched", help = "triangle/step", type = str, default = "triangle")

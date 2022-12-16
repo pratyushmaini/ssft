@@ -152,7 +152,7 @@ def train(model, loader, opt, scheduler, loss_fn, EPOCHS, patience = 5, eval_eve
             mask_list_tr.append(eval_ret["acc_mask"].unsqueeze(0))
             conf_list_tr.append(eval_ret["conf_mask"].unsqueeze(0))
 
-            print(f'Epoch: {ep+1} | Train Mode Eval Loader Accuracy: {eval_ret["accuracy"]:.4f}%')
+            print(f'Epoch: {ep+1} | Eval Loader Accuracy: {eval_ret["accuracy"]:.4f}%')
 
         if acc == 1.0: stop_train_patience += 1
         
